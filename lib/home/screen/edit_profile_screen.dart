@@ -32,23 +32,11 @@ class EditProfileView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
     
-          // Email input field
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Email',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-    
           // Save changes button
           ElevatedButton(
             onPressed: () {
               // Logic to save changes goes here
             },
-            child: const Text('Save'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blueAccent,
               foregroundColor: Colors.white,
@@ -59,6 +47,7 @@ class EditProfileView extends StatelessWidget {
               ),
               elevation: 4,
             ),
+            child: const Text('Save'),
           ),
         ],
       ),

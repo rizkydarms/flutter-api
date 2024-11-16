@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFf3f4f8),  // Light background color for a soft look
       appBar: AppBar(
-        title: const Text('Biller Payment App', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+        title: const Text('Login to your account', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.blueAccent, // Matching app bar color
         elevation: 0,  // Removing app bar shadow for a cleaner look
       ),

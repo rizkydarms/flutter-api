@@ -62,7 +62,6 @@ class ChangePassView extends StatelessWidget {
             onPressed: () {
               // Logic to change password goes here
             },
-            child: const Text('Change Password'),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blueAccent,
               foregroundColor: Colors.white,
@@ -73,6 +72,7 @@ class ChangePassView extends StatelessWidget {
               ),
               elevation: 4,
             ),
+            child: const Text('Change Password'),
           ),
         ],
       ),

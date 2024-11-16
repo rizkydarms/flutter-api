@@ -24,7 +24,7 @@ class BillingView extends StatelessWidget {
             ),
             DropdownButton<String>(
               isExpanded: true,
-              hint: Text('Pilih Jenis Pembayaran'),
+              hint: const Text('Pilih Jenis Pembayaran'),
               items: [
                 'PDAM',
                 'PLN',
@@ -64,7 +64,6 @@ class BillingView extends StatelessWidget {
             // Tombol Check untuk melihat total tagihan
             ElevatedButton(
               onPressed: () {},
-              child: const Text("Check Tagihan"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
                 foregroundColor: Colors.white,
@@ -76,6 +75,7 @@ class BillingView extends StatelessWidget {
                 shadowColor: Colors.black.withOpacity(0.15),
                 elevation: 5,
               ),
+              child: const Text("Check Tagihan"),
             ),
             const SizedBox(height: 20),
 
@@ -142,7 +142,6 @@ class BillingView extends StatelessWidget {
             // Tombol Bayar
             ElevatedButton(
               onPressed: () {},
-              child: const Text("Bayar"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
                 foregroundColor: Colors.white,
@@ -154,6 +153,7 @@ class BillingView extends StatelessWidget {
                 shadowColor: Colors.black.withOpacity(0.15),
                 elevation: 5,
               ),
+              child: const Text("Bayar"),
             ),
           ],
         ),

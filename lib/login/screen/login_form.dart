@@ -21,18 +21,18 @@ class LoginForm extends StatelessWidget {
             );
         }
       },
-      child: Align(
+      child: const Align(
         alignment: Alignment(0, -1 / 3),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const InputUsername(),
-              const SizedBox(height: 16),
-              const InputPassword(),
-              const SizedBox(height: 16),
-              const ButtonSubmit(),
+              InputUsername(),
+              SizedBox(height: 16),
+              InputPassword(),
+              SizedBox(height: 16),
+              ButtonSubmit(),
             ],
           ),
         ),
@@ -130,7 +130,6 @@ class ButtonSubmit extends StatelessWidget {
               onPressed: () {
                 context.read<LoginCubit>().loginSubmitted();
               },
-              child: const Text("Login"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 219, 221, 225),
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 14),
@@ -139,6 +138,7 @@ class ButtonSubmit extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
+              child: const Text("Login"),
             );
     });
   }

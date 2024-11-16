@@ -21,8 +21,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomeView(),
     EditProfileView(),
@@ -36,99 +34,49 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100], // Light background color for a fresh look
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text('Biller Payment'),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
+        title: const Text('Biller Payment'),
       ),
       body: _widgetOptions[_selectedIndex],
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Biller Payment'),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              selected: _selectedIndex == 0,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(0);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Edit Profile'),
-              selected: _selectedIndex == 1,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(1);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Change Password'),
-              selected: _selectedIndex == 2,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(2);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Mutation Records'),
-              selected: _selectedIndex == 3,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(3);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Billing'),
-              selected: _selectedIndex == 4,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(4);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.edit),
+            label: 'Edit Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.lock),
+            label: 'Change Password',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'Mutation Records',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.credit_card),
+            label: 'Billing',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blueAccent,
+        unselectedItemColor: Colors.grey,
+        onTap: _onItemTapped,
       ),
     );
   }
 }
 
 class HomeView extends StatelessWidget {
-  const HomeView({
-    super.key,
-  });
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +87,6 @@ class HomeView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Greeting message
             Padding(
               padding: const EdgeInsets.only(top: 40.0, bottom: 20),
               child: Builder(
@@ -150,15 +97,13 @@ class HomeView extends StatelessWidget {
                   return Text(
                     'Hello, ${user?.name ?? 'User'}!',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueAccent,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueAccent,
+                    ),
                   );
                 },
               ),
             ),
-    
-            // User information card (stretched and moved to top)
             Builder(
               builder: (context) {
                 final user = context.select(
@@ -201,16 +146,13 @@ class HomeView extends StatelessWidget {
                 );
               },
             ),
-    
-            // Logout Button with fresh styling
             ElevatedButton(
               onPressed: () {
                 context.read<AuthCubit>().logout();
               },
-              child: const Text("Logout"),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blueAccent, // Button background color
-                foregroundColor: Colors.white, // Text color
+                backgroundColor: Colors.blueAccent,
+                foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 16),
                 textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 shape: RoundedRectangleBorder(
@@ -219,6 +161,7 @@ class HomeView extends StatelessWidget {
                 shadowColor: Colors.black.withOpacity(0.15),
                 elevation: 5,
               ),
+              child: const Text("Logout"),
             ),
           ],
         ),
